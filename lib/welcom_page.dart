@@ -15,7 +15,7 @@ class _WelcomePageState extends State<WelcomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Welcome Page'),
+        title: const Text('Welcome Page555'),
         leading: IconButton(
           icon: const Icon(Icons.menu),
           onPressed: () {
