@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Display_page.dart';
+import 'package:flutter_app/about_page.dart';
 
 class WelcomePage extends StatefulWidget {
-  const WelcomePage({super.key});
+  const WelcomePage({super.key, required String title});
 
   @override
   _WelcomePageState createState() => _WelcomePageState();
@@ -15,7 +17,7 @@ class _WelcomePageState extends State<WelcomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Welcome Page5556666'),
+        title: const Text('Welcome Page'),
         leading: IconButton(
           icon: const Icon(Icons.menu),
           onPressed: () {
@@ -54,29 +56,60 @@ class _WelcomePageState extends State<WelcomePage> {
                   labelText:'Name ',
                 ),
               ),
+              const Text(
+                'Enter your Name',
+                style: TextStyle(fontSize: 18), // Adjust the font size for better readability
+              ),
+              const SizedBox(height: 20),
 
               ElevatedButton(
                 onPressed: () {
-                  String input = _textController.text;
-                  setState(() {
-                    _output = 'My name is $input'; // Update the _output variable
-                  });
-                  debugPrint('pressed button $input');
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => AboutPage(), // Navigate to the WelcomePage
+                    ),
+                  );
                 },
                 child: const Text(
-                  'OK',
+                  'AboutPage',
                   style: TextStyle(fontSize: 24),
                 ),
               ),
+              // ElevatedButton(
+              //   onPressed: () {
+              //     String input = _textController.text;
+              //     setState(() {
+              //       _output = 'My name is $input'; // Update the _output variable
+              //     });
+              //     debugPrint('pressed button $input');
+              //   },
+              //   child: const Text(
+              //     'AboutPage',
+              //     style: TextStyle(fontSize: 24),
+              //   ),
+              // ),
               ElevatedButton(
                 onPressed: () {
-                  setState(() {
-                    _output = 'Bye Bye'; // Update the _output variable
-                  });
-                  debugPrint('Pressed OK button');
+                  String input =_textController.text;
+                  int inputAge = 18;
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                    builder: (context)=> DisplayPage(
+                       name:input,
+                      age:18,
+                    ),
+                  ),
+                      (route)=> false,
+                  );
+                 // // setState(() {
+                 //    _output = 'Bye Bye'; // Update the _output variable
+                 //  });
+                 //  debugPrint('Pressed OK button');
                 },
                 child: const Text(
-                  'OK',
+                  'Okay',
                   style: TextStyle(fontSize: 24),
                 ),
               ),
@@ -87,7 +120,9 @@ class _WelcomePageState extends State<WelcomePage> {
             ],
           ),
         ),
-      ),
+
+        )
+
     );
   }
 }

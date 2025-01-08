@@ -1,4 +1,8 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Display_page.dart';
+import 'package:flutter_app/welcome_page.dart';
 class AboutPage extends StatelessWidget {
   const AboutPage({super.key});
 
@@ -82,11 +86,11 @@ class AboutPage extends StatelessWidget {
     ),
 
     Row(
-    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    mainAxisAlignment: MainAxisAlignment.start,
     children: [
     const Icon(
-    Icons.favorite,
-    size: 60,
+    Icons.send,
+    size: 20,
     ),
     const SizedBox(width: 20),
     ElevatedButton(
@@ -100,7 +104,35 @@ class AboutPage extends StatelessWidget {
     ),
     ],
     ),
+      ElevatedButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context)=> WelcomePage(),
+            ),
+          );
+        },
+        child: const Text(
+          'WelcomePage',
+          style: TextStyle(fontSize: 24),
+        ),
+      ),
 
+      ElevatedButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context)=> DisplayPage(),
+            ),
+          );
+        },
+        child: const Text(
+          'DisplayPage',
+          style: TextStyle(fontSize: 24),
+        ),
+      ),
     // Card containing Text and Image inside Column
     Card(
     color: Colors.lightBlue[100],
